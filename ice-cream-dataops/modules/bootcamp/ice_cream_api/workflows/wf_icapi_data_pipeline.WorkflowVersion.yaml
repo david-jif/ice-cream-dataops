@@ -6,8 +6,8 @@ workflowDefinition:
     type: transformation
     parameters:
       transformation:
-        externalId: create_asset_hierarchy_task
-        data: { "hours": 1 }
+        externalId: create_asset_hierarchy
+        concurrencyPolicy: fail
     retries: 3
     timeout: 3600
     onFailure: abortWorkflow 
@@ -16,7 +16,7 @@ workflowDefinition:
     parameters:
       transformation:
         externalId: contextualize_ts_assets
-        data: { "hours": 1 }
+        concurrencyPolicy: fail
     retries: 3
     timeout: 3600
     onFailure: abortWorkflow
@@ -38,7 +38,7 @@ workflowDefinition:
     parameters:
       function:
         externalId: oee_timeseries
-        data: { "hours": 1 }
+        data: { }
     retries: 3
     timeout: 3600
     onFailure: abortWorkflow
